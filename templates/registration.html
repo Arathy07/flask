@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTRATION FORM</title>
+</head>
+<body bgcolor="lavender">
+
+    {%if data['up']%}
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>First Name</th>
+                <td><input type="text" name="fname" value="{{data['up'][0]['firstname']}}"></td>
+            </tr>
+            <tr>
+                <th>Second Name</th>
+                <td><input type="text" name="lname" value="{{data['up'][0]['lastname']}}"></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td><input type="text" name="address" value="{{data['up'][0]['address']}}"></td>
+            </tr>
+            <tr>
+                <th>phone number</th>
+                <td><input type="number" name="phone" value="{{data['up'][0]['phone_no']}}"></td>
+            </tr>
+            <tr>
+                <th>Email id</th>
+                <td><input type="email" name="email"value="{{data['up'][0]['email']}}"></td>
+            </tr>
+         
+            <tr>
+    
+                <td align="center" colspan="2"><input type="submit" name="update" value="update"></td>
+            </tr>
+        </table>
+    </form>
+
+    {%else%}
+
+
+    <h1><center>REGISTRATION FORM</center></h1>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>First Name</th>
+                <td><input type="text" name="fname"></td>
+            </tr>
+            <tr>
+                <th>Second Name</th>
+                <td><input type="text" name="lname"></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td><input type="text" name="address"></td>
+            </tr>
+            <tr>
+                <th>phone number</th>
+                <td><input type="number" name="phone"></td>
+            </tr>
+            <tr>
+                <th>Email id</th>
+                <td><input type="email" name="email"></td>
+            </tr>
+            <tr>
+                <th>USERNAME</th>
+                <td><input type="text" name="uname"></td>
+            </tr>
+            <tr>
+                <th>PASSWORD</th>
+                <td><input type="password" name="pw"></td>
+            </tr>
+            <tr>
+    
+                <td align="center" colspan="2"><input type="submit" name="reg" value="Register"></td>
+            </tr>
+        </table>
+    </form>
+
+
+    <table>
+        <tr>
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>address</th>
+            <th>phone_no</th>
+            <th>email</th>
+            
+        </tr>
+       {% for i in data['user']%}
+        <tr>
+            <td>{{i['firstname']}}</td>
+            <td>{{i['lastname']}}</td>
+            <td>{{i['address']}}</td>
+            <td>{{i['phone_no']}}</td>
+            <td>{{i['email']}}</td>
+            <td><a href="?action=update&id={{i['regid']}}">update</a></td>
+            <td><a href="?action=delete&id={{i['regid']}}">Delete</a></td>
+
+
+        </tr>
+        {%endfor%}
+    </table>
+
+    {%endif%}
+</body>
+</html>
