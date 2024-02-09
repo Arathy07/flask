@@ -66,4 +66,4 @@ def registration():
 
 
 
-    return render_template("registration.html")
+    return render_template("registration.html",data=data)
